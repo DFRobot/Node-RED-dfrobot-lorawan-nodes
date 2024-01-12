@@ -1,0 +1,134 @@
+
+
+
+<!-- 设置编辑器 -->
+<script type="text/html" data-template-name="GW Events">
+    <!-- 设置第一行为Name -->
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="lora.listenGatewayEvents.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]lora.listenGatewayEvents.name">
+    </div>
+
+    <div class="form-row">
+        <input type="hidden" id="node-input-outputs"/>
+    </div>
+
+    <!-- 设置第二行为标签(提取条目) -->
+    <div class="form-row">
+        <label for="node-input-label"> <span data-i18n="lora.listenGatewayEvents.label_1"></span> </label>
+    </div>
+
+    <!-- 设置第三行为容器 其中ol表示有序列表 -->
+    <div class="form-row">
+        <input type="checkbox" id="node-input-checkbox1_Power_On" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-checkbox1_Power_On" style="display: inline-block; width: auto; vertical-align: top;">Power On</label>
+    </div>
+
+    <!-- <div class="form-row">
+        <input type="checkbox" id="node-input-checkbox2" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-checkbox2_Power_Off" style="display: inline-block; width: auto; vertical-align: top;">Power Off</label>
+    </div> -->
+
+    <div class="form-row">
+        <input type="checkbox" id="node-input-checkbox3_WAN_Up" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-checkbox3_WAN_Up" style="display: inline-block; width: auto; vertical-align: top;">WAN Up</label>
+    </div>
+
+    <div class="form-row">
+        <input type="checkbox" id="node-input-checkbox4_WAN_Down" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-checkbox4_WAN_Down" style="display: inline-block; width: auto; vertical-align: top;">WAN Down</label>
+    </div>
+
+    <div class="form-row">
+        <input type="checkbox" id="node-input-checkbox5_Cellular_Up" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-checkbox5_Cellular_Up" style="display: inline-block; width: auto; vertical-align: top;">Cellular Up</label>
+    </div>
+
+    <div class="form-row">
+        <input type="checkbox" id="node-input-checkbox6_Cellular_Down" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-checkbox6_Cellular_Down" style="display: inline-block; width: auto; vertical-align: top;">Cellular Down</label>
+    </div>
+
+    <div class="form-row">
+        <input type="checkbox" id="node-input-checkbox7_VPN_Up" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-checkbox7_VPN_Up" style="display: inline-block; width: auto; vertical-align: top;">VPN Up</label>
+    </div>
+
+    <div class="form-row">
+        <input type="checkbox" id="node-input-checkbox8_VPN_Down" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-checkbox8_VPN_Down" style="display: inline-block; width: auto; vertical-align: top;">VPN Down</label>
+    </div>
+</script>
+
+
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('GW Events',{  
+        category: 'LoRaWAN',
+        color: '#ff9047',
+        defaults: {
+            name: {value:""},
+            checkbox1_Power_On: {value: false},
+            // checkbox2_Power_Off: {value: false},
+            checkbox3_WAN_Up: {value: false},
+            checkbox4_WAN_Down: {value: false},
+            checkbox5_Cellular_Up: {value: false},
+            checkbox6_Cellular_Down: {value: false},
+            checkbox7_VPN_Up: {value: false},
+            checkbox8_VPN_Down: {value: false},
+ 
+            outputs: {value:1}, // 用于记录输出端口的数量
+
+        },
+        inputs:0,
+        outputs:1,  // 初始输出数量为1
+        // outputLabels: ["stdout","stderr","rc"],
+        
+        icon: "bridge.svg",
+        align: "left",
+        
+        label: function() {
+            return this.name||this._("lora.listenGatewayEvents.Label_0_dragOut");
+        },
+
+        // 打开编辑对话框时运行的代码
+        oneditprepare: function() {
+
+            function updateOutputs() {
+                $("#node-input-outputs").val(
+                    $("#node-input-checkbox1_Power_On").is(":checked") +
+                    // $("#node-input-checkbox2_Power_Off").is(":checked") +
+                    $("#node-input-checkbox3_WAN_Up").is(":checked") +
+                    $("#node-input-checkbox4_WAN_Down").is(":checked") +
+                    $("#node-input-checkbox5_Cellular_Up").is(":checked") +
+                    $("#node-input-checkbox6_Cellular_Down").is(":checked") +
+                    $("#node-input-checkbox7_VPN_Up").is(":checked") +
+                    $("#node-input-checkbox8_VPN_Down").is(":checked")
+                );
+            }
+
+            $("#node-input-checkbox1_Power_On").on("change", updateOutputs);
+            // $("#node-input-checkbox2_Power_Off").on("change", updateOutputs);
+            $("#node-input-checkbox3_WAN_Up").on("change", updateOutputs);
+            $("#node-input-checkbox4_WAN_Down").on("change", updateOutputs);
+            $("#node-input-checkbox5_Cellular_Up").on("change", updateOutputs);
+            $("#node-input-checkbox6_Cellular_Down").on("change", updateOutputs);
+            $("#node-input-checkbox7_VPN_Up").on("change", updateOutputs);
+            $("#node-input-checkbox8_VPN_Down").on("change", updateOutputs);
+
+
+            updateOutputs(); // 初始化时更新一次输出端口数量
+        },
+
+    });
+</script>
+
+
+
+
+
+
+
+
+    

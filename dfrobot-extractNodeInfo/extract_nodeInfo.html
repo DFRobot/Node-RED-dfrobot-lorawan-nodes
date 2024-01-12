@@ -1,0 +1,110 @@
+
+
+<!-- 设置编辑器 -->
+<script type="text/html" data-template-name="Packet Item">
+    <!-- 设置第一行为Name -->
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="lora.extract_nodeInfo.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]lora.extract_nodeInfo.name">
+    </div>
+
+    <!-- 设置第二行为标签(提取条目) -->
+    <div class="form-row">
+        <label for="node-input-label"> <span data-i18n="lora.extract_nodeInfo.label_1"></span> </label>
+    </div>
+
+    <!-- 设置提取的条目 -->
+    <div>
+        <label for="node-input-checkbox1_RSSI">
+            <input type="checkbox" id="node-input-checkbox1_RSSI" name="checkbox1_RSSI">
+            RSSI
+        </label>
+    </div>
+    <div>
+        <label for="node-input-checkbox2_SNR">
+            <input type="checkbox" id="node-input-checkbox2_SNR" name="checkbox2_SNR">
+            SNR
+        </label>
+    </div>
+    <div>
+        <label for="node-input-checkbox3_DR">
+            <input type="checkbox" id="node-input-checkbox3_DR" name="checkbox3_DR">
+            DR
+        </label>
+    </div>
+    <div>
+        <label for="node-input-checkbox4_devEUI">
+            <input type="checkbox" id="node-input-checkbox4_devEUI" name="checkbox4_devEUI">
+            devEUI
+        </label>
+    </div>
+    <div>
+        <label for="node-input-checkbox5_fCnt">
+            <input type="checkbox" id="node-input-checkbox5_fCnt" name="checkbox5_fCnt">
+            fCnt
+        </label>
+    </div>
+    <div>
+        <label for="node-input-checkbox6_deviceName">
+            <input type="checkbox" id="node-input-checkbox6_deviceName" name="checkbox6_deviceName">
+            deviceName
+        </label>
+    </div>
+    <div>
+        <label for="node-input-checkbox7_applicationID">
+            <input type="checkbox" id="node-input-checkbox7_applicationID" name="checkbox7_applicationID">
+            applicationID
+        </label>
+    </div>
+    <div>
+        <label for="node-input-checkbox8_devAddr">
+            <input type="checkbox" id="node-input-checkbox8_devAddr" name="checkbox8_devAddr">
+            devAddr
+        </label>
+    </div>
+    <!-- <div>
+        <label for="node-input-checkbox9_data">
+            <input type="checkbox" id="node-input-checkbox9_data" name="checkbox9_data">
+            data
+        </label>
+    </div> -->
+</script>
+
+
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('Packet Item',{  
+        category: 'LoRaWAN',
+        color: '#ff9047',
+        defaults: {
+            name: { value: "" }, // 对应于节点名称的配置
+            checkbox1_RSSI: { value: false, required: true }, // 对应于RSSI复选框的配置
+            checkbox2_SNR: { value: false, required: true }, // 对应于SNR复选框的配置
+            checkbox3_DR: { value: false, required: true }, // 对应于DR复选框的配置
+            checkbox4_devEUI: { value: false, required: true }, // 对应于UpCnt复选框的配置
+            checkbox5_fCnt: { value: false, required: true }, // 对应于fCnt复选框的配置
+            checkbox6_deviceName: { value: false, required: true },
+            checkbox7_applicationID: { value: false, required: true } ,
+            checkbox8_devAddr: { value: false, required: true } 
+            // checkbox9_data: { value: false, required: true } 
+        },
+        inputs:1,
+        outputs:1,  
+        icon: "split.svg",
+        align: "left",
+        
+        label: function() {
+            return this.name||this._("lora.extract_nodeInfo.Label_0_dragOut");
+        },
+    });
+</script>
+
+
+
+
+
+
+
+
+    

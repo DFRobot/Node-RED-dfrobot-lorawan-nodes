@@ -1,0 +1,38 @@
+{
+    "name": "@renyoo/node-red-dfrobot-lorawan-nodes",
+    "version": "1.0.15",
+    "description": "node red nodes for dfrobot-lorawan",
+    "node-red": {
+		"version": ">=2.0.0",
+        "nodes": {
+            "dfrobot-decoder": "./dfrobot-decoder/decoder.js",
+            "dfrobot-extractNodeInfo": "./dfrobot-extractNodeInfo/extract_nodeInfo.js",
+            "dfrobot-gatewayLoRaWAN_Receive": "./dfrobot-gatewayLoRaWAN_Receive/lorawan_receive.js",
+            "dfrobot-gatewayLoRaWAN_Send": "./dfrobot-gatewayLoRaWAN_Send/lorawan_send.js",
+            "dfrobot-getNodesList": "./dfrobot-getNodesList/get_nodesList.js",
+            "dfrobot-groupFilter": "./dfrobot-groupFilter/group_filter.js",
+            "dfrobot-listenGatewayEvents": "./dfrobot-listenGatewayEvents/listenGatewayEvents.js",
+            "dfrobot-musicPlayer": "./dfrobot-musicPlayer/music_player.js",
+            "dfrobot-singleNodeInfo": "./dfrobot-singleNodeInfo/single_nodeInfo.js"
+        }
+    },
+    "author": "GDuang",
+    "license": "MIT",
+	"engines": {
+		"node": ">=12.0.0"
+	  },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GDuang/Node-RED-dfrobot-lorawan-nodes.git"
+    },
+    "keywords": [
+        "node-red",
+        "dfrobot",
+        "lorawan",
+		"renyoo"
+    ],
+    "dependencies": {
+        "mqtt": "^4.2.8",
+        "request": "^2.88.2"
+    }
+}
